@@ -6,5 +6,5 @@ jdk:
 - openjdk6
 
 #before_deploy: "echo 'Start deploying the build to server...'"
-#deploy: ./deploy.sh 
+deploy: ./deploy.sh 
 #after_deploy: "echo 'Upload done!'"

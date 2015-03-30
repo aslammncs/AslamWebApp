@@ -5,12 +5,6 @@ jdk:
 - openjdk7
 - openjdk6
 
-before_script: "echo 'Start deploying the build to server...'"
-script: 
-- cd $HOME/$BUILD_HOME/AslamWebApp/target/
-- cp AslamWebApp.war $HOME/$BUILD_HOME/AslamWebApp/build/
-- git add .
-- git commit -a -m "updated"
-- git push origin master
-
-after_script: "echo 'Upload done!'"
+before_deploy: "echo 'Start deploying the build to server...'"
+deploy: ./deploy.sh 
+after_deploy: "echo 'Upload done!'"

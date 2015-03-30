@@ -10,4 +10,4 @@ scp -r $HOME/$BUILD_HOME/AslamWebApp/build/AslamWebApp.war ubuntu@ec2-52-74-74-6
 #git commit -a -m "updated"
 #git push origin master
 
-#echo "Upload done!"
+#echo "Upload done"

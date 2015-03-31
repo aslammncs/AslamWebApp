@@ -4,15 +4,18 @@ jdk:
 - oraclejdk7
 - openjdk7
 - openjdk6
-
-after_success:
-- cd $HOME/$BUILD_HOME/AslamWebApp/target/
-- cp AslamWebApp.war $HOME/$BUILD_HOME/AslamWebApp/build/
-- cd $HOME/$BUILD_HOME/AslamWebApp/build
-- scp -r $HOME/$BUILD_HOME/AslamWebApp/build/AslamWebApp.war ubuntu@ec2-52-74-74-62.ap-southeast-1.compute.amazonaws.com:/home/ubuntu/
-
-
-
-#before_deploy: "echo 'Start deploying the build to server...'"
-#deploy: ./deploy.sh 
-#after_deploy: "echo 'Upload done!'"
+before_deploy:
+ cp target/AslamWebApp.war build/ 
+ "echo 'Start uploading my build to s3 bucket...'"
+deploy:
+  provider: s3
+  access_key_id: AKIAIKJCZLI22AHHWDAQ
+  secret_access_key:
+    secure: FeGk18F4BKWjT1migtlST2H98931++ajL34Dhv4RDs0MEcjY4rt2Fn2IeOGfj+nZQgdSfOVhJam8gDVwu5oxKSjMdevKeFEgobNFv1lfphCFNn9bBgPzRzEg7NqYHyR7f3au7NbIbe7oBKsALmHkc3b0umNawxBygTXgR16CbUk=
+  bucket: mybuilds
+  acl: public_read_write
+  on:
+    repo: aslammncs/AslamWebApp
+  skip_cleanup: true
+  local_dir: build
+after_deploy: "echo 'Upload done!'"

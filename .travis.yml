@@ -5,7 +5,7 @@ jdk:
 - openjdk7
 - openjdk6
 before_deploy:
-# cp target/AslamWebApp.war build/ 
+cp /home/travis/build/aslammncs/AslamWebApp/target/AslamWebApp.war /home/travis/build/aslammncs/AslamWebApp/build 
  "echo 'Start uploading my build to s3 bucket...'"
 deploy:
   provider: s3

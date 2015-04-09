@@ -17,5 +17,5 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -A ubuntu@ec2-52-74-70-147.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh" "echo -e 'yes\n'"
+after_deploy: ssh -A ubuntu@ec2-52-74-70-147.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh ; echo -e 'yes\n'"
 

@@ -5,9 +5,6 @@ jdk:
 - openjdk7
 - openjdk6
 
-env:
- global:
- - secure: FeGk18F4BKWjT1migtlST2H98931++ajL34Dhv4RDs0MEcjY4rt2Fn2IeOGfj+nZQgdSfOVhJam8gDVwu5oxKSjMdevKeFEgobNFv1lfphCFNn9bBgPzRzEg7NqYHyR7f3au7NbIbe7oBKsALmHkc3b0umNawxBygTXgR16CbUk=
 before_deploy:
  "echo 'Start uploading my build to s3 bucket...'"
 deploy:
@@ -21,5 +18,5 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -o StrictHostKeyChecking=no ubuntu@ec2-52-74-70-147.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh; echo -e 'yes\n';"
+after_deploy: ssh -o StrictHostKeyChecking=no ubuntu@ec2-52-74-70-147.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh"
 

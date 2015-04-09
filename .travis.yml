@@ -17,13 +17,5 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: "echo 'Upload done!'"
-
-script: "trigger_install_sh_script_remote" do
-  interpreter "bash"
-  user "ubuntu"
-  code <<-EOH
-    ssh -A ubuntu@ec2-52-74-70-147.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh"
-  EOH
-end
+after_deploy: ssh -A ubuntu@ec2-52-74-70-147.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh"
 

@@ -19,4 +19,4 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -i madpk-dep.pem.enc -o StrictHostKeyChecking=no ubuntu@ec2-52-74-137-74.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh"
+after_deploy: ssh -i $encrypted_32fe5a4e37a3_iv  -o StrictHostKeyChecking=no ubuntu@ec2-52-74-137-74.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh"

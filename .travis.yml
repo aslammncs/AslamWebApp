@@ -4,8 +4,10 @@ jdk:
 - oraclejdk7
 - openjdk7
 - openjdk6
-before_deploy:
- "echo 'Start uploading my build to s3 bucket...'"
+before_install:
+- openssl aes-256-cbc -K $encrypted_32fe5a4e37a3_key -iv $encrypted_32fe5a4e37a3_iv
+  -in madpk-dep.pem.enc -out madpk-dep.pem -d
+before_deploy: echo 'Start uploading my build to s3 bucket...'
 deploy:
   provider: s3
   access_key_id: AKIAIKJCZLI22AHHWDAQ
@@ -18,4 +20,3 @@ deploy:
   skip_cleanup: true
   local_dir: build
 after_deploy: ssh -o StrictHostKeyChecking=no ubuntu@ec2-52-74-70-147.ap-southeast-1.compute.amazonaws.com "sudo sh ~/configure-server/install.sh"
-

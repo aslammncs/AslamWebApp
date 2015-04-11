@@ -19,4 +19,6 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -i openssl aes-256-cbc -K $encrypted_32fe5a4e37a3_key -iv $encrypted_32fe5a4e37a3_iv -in madpk-dep.pem.enc -out madpk-dep.pem -d -o StrictHostKeyChecking=no ubuntu@52.74.126.53
+after_deploy: 
+- openssl aes-256-cbc -K $encrypted_32fe5a4e37a3_key -iv $encrypted_32fe5a4e37a3_iv -in madpk-dep.pem.enc -out madpk-dep.pem -d 
+- ssh -o StrictHostKeyChecking=no ubuntu@52.74.126.53

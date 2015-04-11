@@ -4,9 +4,9 @@ jdk:
 - oraclejdk7
 - openjdk7
 - openjdk6
-before_install:
-- openssl aes-256-cbc -K $encrypted_32fe5a4e37a3_key -iv $encrypted_32fe5a4e37a3_iv
-  -in madpk-dep.pem.enc -out madpk-dep.pem -d
+#before_install:
+#- openssl aes-256-cbc -K $encrypted_32fe5a4e37a3_key -iv $encrypted_32fe5a4e37a3_iv
+#  -in madpk-dep.pem.enc -out madpk-dep.pem -d
 before_deploy: echo 'Start uploading my build to s3 bucket...'
 deploy:
   provider: s3
@@ -19,4 +19,4 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -o StrictHostKeyChecking=no ubuntu@52.74.126.53
+after_deploy: ssh -i openssl aes-256-cbc -K $encrypted_32fe5a4e37a3_key -iv $encrypted_32fe5a4e37a3_iv -in madpk-dep.pem.enc -out madpk-dep.pem -d -o StrictHostKeyChecking=no ubuntu@52.74.126.53

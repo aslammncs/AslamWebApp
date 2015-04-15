@@ -21,4 +21,4 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@52.74.126.53 "sudo sh ~/configure-server/install.sh"
+after_deploy: ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@52.74.126.53 "sudo sh ~/configure-server/install.sh"

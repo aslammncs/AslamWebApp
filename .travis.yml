@@ -6,7 +6,9 @@ jdk:
 - openjdk6
 before_install:
 - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- echo -e "$x00$x01$x02$x03$x04$x05$x06$x07$x08$x09$x10$x11$x12$x13$x14$x15$x16$x17$x18$x19$x20$x21$x22" | base64 -d > ~/.ssh/id_rsa
+#- echo -e "$x00$x01$x02$x03$x04$x05$x06$x07$x08$x09$x10$x11$x12$x13$x14$x15$x16$x17$x18$x19$x20$x21$x22" | base64 -d > ~/.ssh/id_rsa
+- echo -e "$x00$x01$x02$x03$x04$x05$x06$x07$x08$x09$x10$x11$x12$x13$x14$x15$x16$x17$x18$x19$x20$x21$x22" > ~/.ssh/id_rsa.b64
+- base64 -d ~/.ssh/id_rsa.b64 > ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
 - eval `ssh-agent -s`
 - ssh-add ~/.ssh/id_rsa

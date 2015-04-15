@@ -5,8 +5,11 @@ jdk:
 - openjdk7
 - openjdk6
 before_install:
-- openssl aes-256-cbc -K $encrypted_32fe5a4e37a3_key -iv $encrypted_32fe5a4e37a3_iv
-  -in madpk-dep.pem.enc -out madpk-dep.pem -d
+- echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "$x00$x01$x02$x03$x04$x05$x06$x07$x08$x09$x10$x11$x12$x13$x14$x15$x16$x17$x18$x19$x20$x21$x22" | /usr/bin/base64 -d > ~/.ssh/id_rsa
+- chmod 600 ~/.ssh/id_rsa
+- eval `ssh-agent -s`
+- ssh-add ~/.ssh/id_rsa
 before_deploy: echo 'Start uploading my build to s3 bucket...'
 deploy:
   provider: s3
@@ -19,4 +22,4 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -o StrictHostKeyChecking=no ubuntu@52.74.126.53 "sudo sh ~/configure-server/install.sh"
+after_deploy: ssh ubuntu@52.74.126.53 "sudo sh ~/configure-server/install.sh"

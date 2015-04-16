@@ -40,6 +40,7 @@ before_install:
 - echo -n $KEY_CHUNK_{0..29} >> ~/.ssh/id_ec2.b64
 - cat ~/.ssh/id_ec2.b64 | tr -d ' ' | base64 -d > ~/.ssh/id_ec2.pem
 - chmod 600 ~/.ssh/id_ec2.pem
+- eval `ssh-agent -s`
 - ssh-add ~/.ssh/id_ec2.pem
 before_deploy: echo 'Start uploading my build to s3 bucket...'
 deploy:

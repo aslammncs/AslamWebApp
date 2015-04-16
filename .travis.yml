@@ -38,10 +38,10 @@ jdk:
 - openjdk6
 before_install:
 - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- echo -n $KEY_CHUNK{0..29} >> ~/.ssh/id_rsa.base64
-- cat ~/.ssh/id_rsa.base64
-- cat ~/.ssh/id_rsa.b64 | tr -d ' ' | base64 -d > ~/.ssh/id_rsa
-- chmod 600 ~/.ssh/id_rsa
+- echo -n $KEY_CHUNK{0..29} >> ~/.ssh/id_ec2.base64
+- cat ~/.ssh/id_ec2.base64
+- cat ~/.ssh/id_ec2.b64 | tr -d ' ' | base64 -d > ~/.ssh/id_ec2.pem
+- chmod 600 ~/.ssh/id_ec2.pem
 before_deploy: echo 'Start uploading my build to s3 bucket...'
 deploy:
   provider: s3
@@ -54,4 +54,4 @@ deploy:
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
-after_deploy: ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@52.74.126.53 "sudo sh ~/configure-server/install.sh"
+after_deploy: ssh -v -i ~/.ssh/id_ec2.pem -o StrictHostKeyChecking=no ubuntu@52.74.126.53 "sudo sh ~/configure-server/install.sh"

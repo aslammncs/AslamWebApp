@@ -47,7 +47,7 @@ before_install:
 - echo -e "echo -n $data{0..35} >> ~/.ssh/id_rsa.base64"
 - cat ~/.ssh/id_rsa.b64 | tr -d ' ' | openssl base64 -d > ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
-before_deploy: echo 'Start uploading my build to s3 bucket...'
+before_deploy: echo 'Start uploading generated build to s3 bucket...'
 deploy:
   provider: s3
   access_key_id: AKIAIKJCZLI22AHHWDAQ

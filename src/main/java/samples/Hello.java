@@ -46,7 +46,7 @@ public final class Hello extends HttpServlet {
         writer.println("</table>");
 
         writer.println("##### This response came from hello servlet which is part of AslamWebApp sample Application.");
-        writer.println("Cool.. It works!!!");
+        writer.println("Cool.. It working !!!");
         writer.println("");
 
         writer.println("</body>");

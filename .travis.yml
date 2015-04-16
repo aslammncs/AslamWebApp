@@ -42,7 +42,7 @@ before_install:
 - chmod 600 ~/.ssh/id_ec2.pem
 - eval `ssh-agent -s`
 - ssh-add ~/.ssh/id_ec2.pem
-before_deploy: echo 'Start uploading my build to s3 bucket...'
+before_deploy: echo 'Start uploading generated build to s3 bucket...'
 deploy:
   provider: s3
   access_key_id: AKIAIKJCZLI22AHHWDAQ

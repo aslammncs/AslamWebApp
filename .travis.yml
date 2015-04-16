@@ -33,7 +33,6 @@ env:
 language: java
 script: mvn clean install
 jdk:
-- oraclejdk7
 - openjdk7
 before_install:
 - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config

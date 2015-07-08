@@ -1,4 +1,5 @@
 env:
+echo 'TRAVIS_TAG - [$TRAVIS_TAG]
   global:
   - secure: PPkh+Z6+NR6jyNp2UJ7apRGYbvEKPbQOff+hvInls2lpVr8SsYEvjlTHvzbn4raHrGnPU8VXMDr7F0ze7T3Y7GPgq+n/xn+3SNnLyqbkqaAa4buKPIxBLsj6/ZKr7cZ+oiG8N1dO8beA/5KaVSSTXwnkI+smHn5P9jL3GYxui6E=
   - secure: VvHTiGLRlIj87cWPRR8LrAxxtBcBq+HRZ4b2+ZkXumcE/KiSB5pcO5fDRRQ+fJEPnAVCqmv9dJR/C5wSfrPKlbJ7qrCqss1yvNyEnXLxfF18bIA4VfcZj50tsJee7WsuFJt/XQRxqkDwju12jFqbQs5u3E45CGaSHdmTos6YPFE=

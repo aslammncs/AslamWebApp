@@ -55,6 +55,7 @@ deploy:
   bucket: mybuilds
   acl: public_read_write
   on:
+    tag: true
     repo: aslammncs/AslamWebApp
   skip_cleanup: true
   local_dir: build
